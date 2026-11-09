@@ -48,4 +48,5 @@ The photographs are real, openly licensed images from Wikimedia Commons, used on
 1. Public site (done)
 2. Database and CMS: Prisma, PostgreSQL, Auth.js, roles (Admin, Editor, Contributor)
 3. Volunteer and partner workflows, newsletter, messages inbox
-4. Donation integration (M-Pesa Daraja, card gateway) once a client has verified accounts
+4. Content-Security-Policy (needs testing with Next.js inline scripts and the Google Maps embed)
+5. Donation integration (M-Pesa Daraja, card gateway) once a client has verified accounts

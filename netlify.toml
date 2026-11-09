@@ -1,0 +1,72 @@
+# Netlify config for the Tumaini Outreach demo (Next.js App Router).
+# Netlify detects Next.js and applies its Next.js runtime automatically, so
+# no `publish` directory is set here (setting one would break the runtime).
+#
+# Environment variable to set in the Netlify UI BEFORE the first build:
+#   NEXT_PUBLIC_SITE_URL = https://<your-site>.netlify.app   (or your custom domain)
+# Next.js inlines it at build time; it drives the sitemap, canonical links and
+# social share cards. Changing it later requires a redeploy.
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# ---------------------------------------------------------------------------
+# Redirects
+# ---------------------------------------------------------------------------
+# *.netlify.app already forces https, so nothing is needed until a custom
+# domain is attached. When it is, uncomment and replace the host below
+# (same pattern as the GlimmerInk portfolio's public/_redirects).
+#
+# NOTE: do NOT add a catch-all "/* /404.html 404" rule here. That is for plain
+# static sites; on Next.js it would shadow real routes. Next.js serves its own
+# not-found page (src/app/not-found.tsx).
+#
+# [[redirects]]
+#   from = "http://tumaini.example.org/*"
+#   to = "https://tumaini.example.org/:splat"
+#   status = 301
+#   force = true
+#
+# [[redirects]]
+#   from = "http://www.tumaini.example.org/*"
+#   to = "https://tumaini.example.org/:splat"
+#   status = 301
+#   force = true
+#
+# [[redirects]]
+#   from = "https://www.tumaini.example.org/*"
+#   to = "https://tumaini.example.org/:splat"
+#   status = 301
+#   force = true
+
+# ---------------------------------------------------------------------------
+# Security headers on every response
+# ---------------------------------------------------------------------------
+# A Content-Security-Policy is intentionally not set yet: Next.js hydration
+# uses inline scripts and the contact page embeds Google Maps, so a CSP should
+# be added and tested together (see TODO in README roadmap).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# ---------------------------------------------------------------------------
+# Caching
+# ---------------------------------------------------------------------------
+# Photos are served through Next's image optimiser; the originals rarely change.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
