@@ -29,7 +29,13 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       {site.isDemo && (
         <p className="bg-teal-deep px-4 py-1.5 text-center text-xs text-white/90">
-          Demo site by GlimmerInk Creations: fictional organisation, sample content.
+          Demo site by GlimmerInk Creations<span className="hidden sm:inline">: fictional organisation, sample content</span>
+          <span aria-hidden="true"> · </span>
+          <a href={site.studio.contactHref} target="_blank" rel="noopener" className="font-semibold text-gold underline underline-offset-2 hover:text-white">
+            <span className="sm:hidden">Get in touch →</span>
+            <span className="hidden sm:inline">Want a site like this? Get in touch →</span>
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
         </p>
       )}
       <Container className="flex h-18 items-center justify-between py-3">

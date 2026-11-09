@@ -28,12 +28,16 @@ export const site = {
     mapQuery: "Kisumu, Kenya",
   },
 
-  social: [
-    { label: "Facebook", href: "#" },
-    { label: "Instagram", href: "#" },
-    { label: "X (Twitter)", href: "#" },
-    { label: "LinkedIn", href: "#" },
-  ],
+  /** The fictional demo org has no real profiles, so none are shown. Add { label, href } entries for a real client. */
+  social: [] as { label: string; href: string }[],
+
+  /** Studio call to action, shown only while isDemo is true. */
+  studio: {
+    name: "GlimmerInk Creations",
+    contactHref: "https://glimmerink.co.ke/contact",
+    whatsappHref:
+      "https://wa.me/254746527253?text=Hi%20GlimmerInk%2C%20I%20saw%20the%20Tumaini%20demo%20website%20and%20I%27d%20like%20a%20site%20for%20my%20organisation.",
+  },
 
   /** Feature flags: switch parts of the site on/off per client. */
   features: {

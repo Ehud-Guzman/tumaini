@@ -23,13 +23,25 @@ export function Footer() {
         <div className="md:col-span-2">
           <Logo tone="light" link={false} />
           <p className="mt-4 max-w-sm">{site.tagline}</p>
-          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2" aria-label="Social media">
-            {site.social.map((s) => (
-              <li key={s.label}>
-                <a href={s.href} className="underline decoration-white/40 underline-offset-4 hover:text-white">{s.label}</a>
-              </li>
-            ))}
-          </ul>
+          {site.social.length > 0 && (
+            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2" aria-label="Social media">
+              {site.social.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} className="underline decoration-white/40 underline-offset-4 hover:text-white">{s.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+          {site.isDemo && (
+            <div className="mt-6 max-w-sm rounded-2xl border border-white/20 bg-white/5 p-5">
+              <p className="font-serif text-lg text-white">Want a website like this for your organisation?</p>
+              <p className="mt-1 text-sm text-white/75">{site.studio.name} builds fast, accessible websites for NGOs, schools and community groups.</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a href={site.studio.contactHref} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center rounded-full bg-clay px-5 font-semibold text-white hover:bg-clay-deep">Get in touch<span className="sr-only"> (opens in a new tab)</span></a>
+                <a href={site.studio.whatsappHref} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center rounded-full border border-white/40 px-5 font-semibold text-white hover:bg-white/10">WhatsApp us<span className="sr-only"> (opens in a new tab)</span></a>
+              </div>
+            </div>
+          )}
         </div>
         <div>
           <h2 className="mb-3 text-base font-semibold text-white">Explore</h2>
