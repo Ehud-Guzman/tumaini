@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/*
+  Tumaini Outreach design tokens.
+  Palette: deep teal (trust) + warm terracotta (action) + sand neutrals.
+  All text/background pairs below meet WCAG AA (4.5:1).
+*/
+:root {
+  --paper: #fbf8f3;
+  --sand: #f2ebdf;
+  --line: #e2d8c7;
+  --ink: #1f2a2b;
+  --ink-soft: #4a5a5b;
+  --teal: #0f5257;
+  --teal-deep: #0a3a3e;
+  --clay: #b4491f;
+  --clay-deep: #98390f;
+  --gold: #e8b04a;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-clay: var(--clay);
+  --color-clay-deep: var(--clay-deep);
+  --color-gold: var(--gold);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), Georgia, serif;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--teal-deep);
+}
+
+:focus-visible {
+  outline: 3px solid var(--clay);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--teal-deep);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Subtle reveal; disabled for users who prefer reduced motion */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.7s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
