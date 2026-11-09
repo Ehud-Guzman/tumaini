@@ -12,6 +12,9 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   locale: "en_KE",
 
+  /** Website credit shown in the footer. Set to null to hide it. */
+  credit: { prefix: "Created by", name: "GlimmerInk Creations", href: "https://glimmerink.co.ke/" },
+
   /** Demo notice. Set to false for a real client deployment. */
   isDemo: true,
   demoNotice:

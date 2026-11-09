@@ -52,9 +52,24 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-white/15">
-        <Container className="flex flex-col gap-3 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {site.name}. <Link href="/privacy" className="underline underline-offset-4 hover:text-white">Privacy policy</Link> · <Link href="/credits" className="underline underline-offset-4 hover:text-white">Photo credits</Link></p>
-          {site.isDemo && <p className="max-w-xl text-white/70">{site.demoNotice} Built by GlimmerInk Creations.</p>}
+        <Container className="flex flex-col gap-4 py-6 text-sm">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} {site.name}. <Link href="/privacy" className="underline underline-offset-4 hover:text-white">Privacy policy</Link> · <Link href="/credits" className="underline underline-offset-4 hover:text-white">Photo credits</Link></p>
+            {site.credit && (
+              <p>
+                {site.credit.prefix}{" "}
+                <a
+                  href={site.credit.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="font-semibold text-white underline decoration-gold underline-offset-4 hover:text-gold"
+                >
+                  {site.credit.name}<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </p>
+            )}
+          </div>
+          {site.isDemo && <p className="max-w-3xl text-white/70">{site.demoNotice}</p>}
         </Container>
       </div>
     </footer>
