@@ -43,8 +43,12 @@
 #   force = true
 
 # ---------------------------------------------------------------------------
-# Security headers on every response
+# Security headers (static files)
 # ---------------------------------------------------------------------------
+# netlify.toml headers apply to static files (images, icons) but NOT to pages
+# served by the Next.js runtime. The same security headers for pages are set in
+# next.config.ts. Keep the two in sync.
+#
 # A Content-Security-Policy is intentionally not set yet: Next.js hydration
 # uses inline scripts and the contact page embeds Google Maps, so a CSP should
 # be added and tested together (see TODO in README roadmap).
